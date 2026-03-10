@@ -1,0 +1,30 @@
+{
+  "name": "swiggy",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sumit1952/React-Basic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sumit1952/React-Basic/issues"
+  },
+  "homepage": "https://github.com/Sumit1952/React-Basic#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@tailwindcss/postcss": "^4.2.0",
+    "parcel": "^2.16.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-redux": "^9.2.0",
+    "react-router": "^7.13.1",
+    "tailwindcss": "^4.2.0"
+  }
+}
