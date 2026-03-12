@@ -35,7 +35,7 @@ export const Restaurant = () => {
   }
 
   return (
-    <div className='flex flex-wrap w-[80%] mx-auto mt-20 gap-5'>
+    <div className='flex flex-wrap w-[95%] sm:w-[90%] md:w-[80%] mx-auto mt-10 md:mt-20 gap-3 sm:gap-4 md:gap-5'>
       {RestData.map((restInfo) => (
         <RestCard
           key={restInfo?.info?.id}

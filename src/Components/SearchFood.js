@@ -43,25 +43,28 @@ export const SearchFood = () => {
 
 
  return (
-    <div className="w-[80%] mx-auto mt-20">
+    <div className="w-[95%] sm:w-[90%] md:w-[80%] mx-auto mt-10 md:mt-20">
 
        <input
-         className="w-full pl-10 py-4 text-2xl bg-gray-200 rounded-2xl border"
+         className="w-full pl-6 md:pl-10 py-3 md:py-4 text-lg md:text-2xl bg-gray-200 rounded-2xl border"
          placeholder="Search food..."
          onChange={(e) => setFood(e.target.value)}
        />
 
-       <div className="mt-10 space-y-5">
+       <div className="mt-6 md:mt-10 space-y-4 md:space-y-5">
 
          {searchItems.map((item) => (
 
            <div
              key={item.id}
-             className="flex justify-between bg-gray-100 p-5 rounded-xl shadow"
+             className="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-gray-100 p-4 md:p-5 rounded-xl shadow gap-2"
            >
-             <h2 className="text-xl font-semibold">{item.name}</h2>
 
-             <p className="text-green-600 font-bold">
+             <h2 className="text-base md:text-xl font-semibold">
+               {item.name}
+             </h2>
+
+             <p className="text-green-600 font-bold text-sm md:text-lg">
                ₹{item.price / 100 || item.defaultPrice / 100}
              </p>
 

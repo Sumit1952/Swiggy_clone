@@ -7,7 +7,7 @@ export default function MenuCard({ menuItems , foodselected}) {
   if ("categories" in menuItems) {
     return (
       <div className="w-full">
-        <p>{menuItems?.title}</p>
+        <p className="text-lg md:text-xl font-bold">{menuItems?.title}</p>
         <div>
           {menuItems?.categories?.map((items) => (
             <MenuCard key={items?.title} menuItems={items}></MenuCard>
@@ -16,57 +16,101 @@ export default function MenuCard({ menuItems , foodselected}) {
       </div>
     );
   }
+
   if (!isOpen) {
     return (
-      <div className="w-full ">
-        <div className="flex justify-between w-full">
-          <p className="text-xl font-bold mb-4">{menuItems?.title}</p>
+      <div className="w-full">
+        <div className="flex justify-between items-center w-full">
+          <p className="text-lg md:text-xl font-bold mb-3 md:mb-4">
+            {menuItems?.title}
+          </p>
+
           <button
-            className="text-xl mr-15 font-bold"
+            className="text-lg md:text-xl font-bold mr-4 md:mr-10"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? "△" : "▽"}
           </button>
         </div>
+
         <div className="h-1 bg-gray-400 rounded-2xl mt-2 mb-2"></div>
       </div>
     );
   }
-     if(foodselected==='veg'){
-         return(
-             <div className="w-full">
-             <div className="flex justify-between w-full">
-             <p className="text-3xl font-bold mb-4">{menuItems.title}</p>
-             <button className="text-5xl font-bold mr-20" onClick={()=>setIsOpen(!isOpen)}>{isOpen?'^':'˯'}</button>
-             </div>
-             <div>
-                 {
-                     menuItems?.itemCards?.filter((food)=> "isVeg" in food?.card?.info).map((items)=><RestInfo key={items?.card?.info?.id} restData = {items?.card?.info}></RestInfo>)
-                 }
-             </div>
-             <div className="h-5 bg-gray-200 mt-2 mb-2"></div>
-         </div>
-         )
-     }
- 
-     if(foodselected==='nonveg'){
-         return(
-             <div className="w-full">
-             <div className="flex justify-between w-full">
-             <p className="text-3xl font-bold mb-4">{menuItems.title}</p>
-             <button className="text-5xl font-bold mr-20" onClick={()=>setIsOpen(!isOpen)}>{isOpen?'^':'˯'}</button>
-             </div>
-             <div>
-                 {
-                     menuItems?.itemCards?.filter((food)=> !("isVeg" in food?.card?.info)).map((items)=><RestInfo key={items?.card?.info?.id} restData = {items?.card?.info}></RestInfo>)
-                 }
-             </div>
-             <div className="h-5 bg-gray-200 mt-2 mb-2"></div>
-         </div>
-         )
-     }
- 
-    
+
+
+  if(foodselected==='veg'){
+      return(
+          <div className="w-full">
+          <div className="flex justify-between items-center w-full">
+
+          <p className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
+            {menuItems.title}
+          </p>
+
+          <button
+          className="text-2xl md:text-5xl font-bold mr-4 md:mr-20"
+          onClick={()=>setIsOpen(!isOpen)}>
+          {isOpen?'^':'˯'}
+          </button>
+
+          </div>
+
+          <div>
+              {
+                  menuItems?.itemCards
+                  ?.filter((food)=> "isVeg" in food?.card?.info)
+                  .map((items)=>(
+                    <RestInfo
+                    key={items?.card?.info?.id}
+                    restData={items?.card?.info}
+                    ></RestInfo>
+                  ))
+              }
+          </div>
+
+          <div className="h-4 md:h-5 bg-gray-200 mt-2 mb-2"></div>
+
+      </div>
+      )
+  }
+
+
+  if(foodselected==='nonveg'){
+      return(
+          <div className="w-full">
+          <div className="flex justify-between items-center w-full">
+
+          <p className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
+            {menuItems.title}
+          </p>
+
+          <button
+          className="text-2xl md:text-5xl font-bold mr-4 md:mr-20"
+          onClick={()=>setIsOpen(!isOpen)}>
+          {isOpen?'^':'˯'}
+          </button>
+
+          </div>
+
+          <div>
+              {
+                  menuItems?.itemCards
+                  ?.filter((food)=> !("isVeg" in food?.card?.info))
+                  .map((items)=>(
+                    <RestInfo
+                    key={items?.card?.info?.id}
+                    restData={items?.card?.info}
+                    ></RestInfo>
+                  ))
+              }
+          </div>
+
+          <div className="h-4 md:h-5 bg-gray-200 mt-2 mb-2"></div>
+
+      </div>
+      )
+  }
 
 
 
@@ -74,15 +118,22 @@ export default function MenuCard({ menuItems , foodselected}) {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between w-full">
-        <p className="text-xl font-bold mb-4">{menuItems?.title}</p>
+
+      <div className="flex justify-between items-center w-full">
+
+        <p className="text-lg md:text-xl font-bold mb-3 md:mb-4">
+          {menuItems?.title}
+        </p>
+
         <button
-          className="text-xl mr-15 font-bold"
+          className="text-lg md:text-xl font-bold mr-4 md:mr-10"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? "△" : "▽"}
         </button>
+
       </div>
+
       <div>
         {menuItems?.itemCards?.map((items) => (
           <RestInfo
@@ -91,7 +142,9 @@ export default function MenuCard({ menuItems , foodselected}) {
           ></RestInfo>
         ))}
       </div>
+
       <div className="h-1 bg-gray-400 mt-2 mb-2 rounded-2xl"></div>
+
     </div>
   );
 }

@@ -35,27 +35,52 @@ export const RestaurantMenu = () => {
     if (id) fetchData();
   }, [id]);
 
-  console.log("RestData:", RestData);
-
   return (
     <div>
-      <div className="w-[80%] mx-auto mt-20 mb-20" >
-        <Link to ={`/city/delhi/${id}/search`} >
-        <p className="w-full text-center py-4 rounded-4xl bg-gray-200">Search for Dishes</p>
+
+      {/* Search bar */}
+      <div className="w-[95%] sm:w-[90%] md:w-[80%] mx-auto mt-10 md:mt-20 mb-10 md:mb-20">
+        <Link to={`/city/delhi/${id}/search`}>
+          <p className="w-full text-center py-3 md:py-4 rounded-4xl bg-gray-200 text-sm md:text-base">
+            Search for Dishes
+          </p>
         </Link>
-      </div >
-      <div className="w-[80%] mx-auto mt-20 mb-20">
-        <button className={`text-2xl py-2 px-8 mr-4 border rounded-2xl text-center ${selected === "veg" ? "bg-green-600" : "bg-gray-300"}`} onClick={() => setSelected(selected === "veg" ? null : "veg")}> Veg </button>
-        <button className={`text-2xl py-2 px-4  border rounded-2xl text-center ${selected === "nonveg" ? "bg-red-600" : "bg-gray-300"} `}onClick={() => setSelected(selected === "nonveg" ? null : "nonveg")}>Non Veg</button>
       </div>
-      <div className="w-[80%] mx-auto">
+
+      {/* Veg / Nonveg filter */}
+      <div className="w-[95%] sm:w-[90%] md:w-[80%] mx-auto mb-10 md:mb-20 flex flex-wrap gap-3">
+
+        <button
+          className={`text-lg md:text-2xl py-2 px-5 md:px-8 border rounded-2xl text-center ${
+            selected === "veg" ? "bg-green-600" : "bg-gray-300"
+          }`}
+          onClick={() => setSelected(selected === "veg" ? null : "veg")}
+        >
+          Veg
+        </button>
+
+        <button
+          className={`text-lg md:text-2xl py-2 px-4 border rounded-2xl text-center ${
+            selected === "nonveg" ? "bg-red-600" : "bg-gray-300"
+          }`}
+          onClick={() => setSelected(selected === "nonveg" ? null : "nonveg")}
+        >
+          Non Veg
+        </button>
+
+      </div>
+
+      {/* Menu list */}
+      <div className="w-[95%] sm:w-[90%] md:w-[80%] mx-auto">
         {RestData.map((menuItems) => (
           <MenuCard
             key={menuItems?.card?.card?.title}
-            menuItems={menuItems?.card?.card} foodselected={selected}
+            menuItems={menuItems?.card?.card}
+            foodselected={selected}
           />
         ))}
       </div>
+
     </div>
   );
 };

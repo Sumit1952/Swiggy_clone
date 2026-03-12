@@ -1,22 +1,53 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { Link } from "react-router";
 
-export const RestCard = ({restInfo}) => {
+export const RestCard = ({ restInfo }) => {
   return (
-    <Link to ={"/city/delhi/"+restInfo?.info?.id}>
-    <div className='max-w-[280px] mt-2 transform transition duration-200 hover:scale-95'>
-    <img className='h-45 w-70 object-cover rounded-xl' src={"https://media-assets.swiggy.com/swiggy/image/upload/"+restInfo?.info?.cloudinaryImageId}></img>
-    <div className='w-[95%] mx-auto mt-3'>
-    <div className='font-bold text-2xl  '>{restInfo?.info?.name}</div>
-    <div className='flex gap-2'>
-    
-    <span className='text-lg'>⭐{restInfo?.info?.avgRating}</span>
-    <span className='text-lg font-semibold'>{restInfo?.info?.sla?.slaString}</span>
-    </div>
-    <div className='text-gray-500  text-xl mt-1 overflow-hidden h-7'>{restInfo?.info?.cuisines?.join(", ")}</div>
-    <div>{restInfo?.info?.areaName}</div>
-    </div>
-    </div>
+    <Link to={"/city/delhi/" + restInfo?.info?.id}>
+
+      <div className="w-[260px] hover:scale-95 transition duration-200">
+
+        {/* Image */}
+        <div className="relative">
+          <img
+            className="w-[260px] h-[170px] object-cover rounded-xl"
+            src={
+              "https://media-assets.swiggy.com/swiggy/image/upload/" +
+              restInfo?.info?.cloudinaryImageId
+            }
+          />
+
+          <div className="absolute bottom-0 left-0 right-0 h-14 rounded-b-xl bg-gradient-to-t from-black/70 to-transparent"></div>
+
+          <p className="absolute bottom-2 left-3 text-white font-bold text-sm">
+            20% OFF UPTO ₹50
+          </p>
+        </div>
+
+        {/* Details */}
+        <div className="mt-2">
+
+          <h2 className="font-bold text-lg">
+            {restInfo?.info?.name}
+          </h2>
+
+          <div className="flex gap-2 text-sm font-semibold">
+            <span>⭐ {restInfo?.info?.avgRating}</span>
+            <span>{restInfo?.info?.sla?.slaString}</span>
+          </div>
+
+          <p className="text-gray-500 text-sm">
+            {restInfo?.info?.cuisines?.join(", ")}
+          </p>
+
+          <p className="text-gray-500 text-sm">
+            {restInfo?.info?.areaName}
+          </p>
+
+        </div>
+
+      </div>
+
     </Link>
-  )
-}
+  );
+};
